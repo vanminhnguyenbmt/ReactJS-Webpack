@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import Menu from '../Menu/Menu';
 import routes from '../../routers';
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router, HashRouter } from "react-router-dom";
 
 class App extends Component {
     render() {
         return (
-            <Router>
+            <HashRouter>
                 <div>
                     <Menu />
                     <div className="container">
                         {this.showContentMenus(routes)}
                     </div>
                 </div>
-            </Router>
+            </HashRouter>
         );
     }
 
