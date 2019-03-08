@@ -43,6 +43,17 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all'
+                }
+            }
+        }
+    },
     plugins: [
         new webpack.ProvidePlugin({
             '$': 'jquery',
