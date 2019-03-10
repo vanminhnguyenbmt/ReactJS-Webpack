@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = [
     "axios",
@@ -21,7 +22,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -52,6 +53,9 @@ module.exports = {
                     chunks: 'all'
                 }
             }
+        },
+        runtimeChunk: {
+            name: "manifest",
         }
     },
     plugins: [
@@ -60,6 +64,9 @@ module.exports = {
             'jQuery': 'jquery',
             'window.$': 'jquery',
             'window.jQuery': 'jquery'
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html'
         })
     ]
 }
